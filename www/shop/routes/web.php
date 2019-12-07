@@ -15,16 +15,16 @@
  * all routes which needs authorization
  */
 $router->group(['middleware' => ['auth']], function () use ($router) {
-    $router->put('api/products', 'ApiController@products');
+    $router->put('api/products', 'Api\ProductsController@products');
 });
 
 /**
  * user methods
  */
-$router->post('api/login', 'ApiController@login');
-$router->get('api/logout', 'ApiController@logout');
+$router->post('api/login', 'Api\UserController@login');
+$router->get('api/logout', 'Api\UserController@logout');
 
 /**
  * catalog
  */
-$router->get('api/products[/{id}]', 'ApiController@products');
+$router->get('api/products[/{id}]', 'Api\ProductsController@products');

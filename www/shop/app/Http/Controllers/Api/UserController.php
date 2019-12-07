@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Laravel\Lumen\Routing\Controller as Controller;
 use Illuminate\Http\Request;
@@ -8,23 +8,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class ApiController
+ * Class UserController
  * @package App\Http\Controllers
  */
-class ApiController extends Controller
+class UserController extends Controller
 {
-    /**
-     * @param Request $request
-     * @param null $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function products(Request $request, $id = null)
-    {
-        $products = DB::select("SELECT * FROM products");
-
-        return response()->json($products);
-    }
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
