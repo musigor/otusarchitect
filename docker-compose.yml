@@ -5,6 +5,8 @@ services:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
+    ports:
+      - "3306:3306"
     volumes:
       - ./mysql-data:/var/lib/mysql
     networks:

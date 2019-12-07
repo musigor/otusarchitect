@@ -11,6 +11,20 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+/**
+ * all routes which needs authorization
+ */
+$router->group(['middleware' => ['auth']], function () use ($router) {
+    $router->put('api/products', 'ApiController@products');
 });
+
+/**
+ * user methods
+ */
+$router->post('api/login', 'ApiController@login');
+$router->get('api/logout', 'ApiController@logout');
+
+/**
+ * catalog
+ */
+$router->get('api/products[/{id}]', 'ApiController@products');
