@@ -23,4 +23,49 @@ class ProductsController extends Controller
 
         return response()->json($products);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updateProducts(Request $request)
+    {
+        $this->validate($request, [
+            'id'          => 'required',
+            'sku'         => 'required',
+            'name'        => 'required',
+            'description' => 'required',
+        ]);
+
+        DB::table('products')->where('id', $request->get('id'))->update([
+            'sku'         => $request->get('sku'),
+            'name'        => $request->get('name'),
+            'description' => $request->get('description'),
+        ]);
+
+        return response()->json(['status' => 200]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function createProducts(Request $request)
+    {
+        $this->validate($request, [
+            'sku'         => 'required|unique:products',
+            'name'        => 'required',
+            'description' => 'required',
+        ]);
+
+        DB::table('products')->insert([
+            'sku'         => $request->get('sku'),
+            'name'        => $request->get('name'),
+            'description' => $request->get('description'),
+        ]);
+
+        return response()->json(['status' => 200]);
+    }
 }

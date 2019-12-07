@@ -15,7 +15,11 @@
  * all routes which needs authorization
  */
 $router->group(['middleware' => ['auth']], function () use ($router) {
-    $router->put('api/products', 'Api\ProductsController@products');
+    $router->put('api/users', 'Api\UserController@updateUser');
+    $router->post('api/users', 'Api\UserController@createUser');
+
+    $router->put('api/products', 'Api\ProductsController@updateProducts');
+    $router->post('api/products', 'Api\ProductsController@createProducts');
 });
 
 /**

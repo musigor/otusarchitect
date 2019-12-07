@@ -47,4 +47,53 @@ class UserController extends Controller
 
         return response()->json(['status' => 200]);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updateUser(Request $request)
+    {
+        $this->validate($request, [
+            'id'        => 'required',
+            'email'     => 'required|email',
+            'password'  => 'required',
+            'firstname' => 'required',
+            'lastname'  => 'required',
+        ]);
+
+        DB::table('users')->where('id', $request->get('id'))->update([
+            'email'     => $request->get('email'),
+            'password'  => Hash::make($request->get('password')),
+            'firstname' => $request->get('firstname'),
+            'lastname'  => $request->get('lastname'),
+        ]);
+
+        return response()->json(['status' => 200]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function createUser(Request $request)
+    {
+        $this->validate($request, [
+            'email'     => 'required|email|unique:users',
+            'password'  => 'required',
+            'firstname' => 'required',
+            'lastname'  => 'required',
+        ]);
+
+        DB::table('users')->insert([
+            'email'     => $request->get('email'),
+            'password'  => Hash::make($request->get('password')),
+            'firstname' => $request->get('firstname'),
+            'lastname'  => $request->get('lastname'),
+        ]);
+
+        return response()->json(['status' => 200]);
+    }
 }
