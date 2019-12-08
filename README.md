@@ -33,6 +33,14 @@ Dependencies:
  * make
  
 Clone project repo to your local environment first. Switch to the cloned folder and execute\
-``make`` to compose up the docker infrastructure and install all dependencies. Also database magrations will be executed automatically.  
+``make`` to compose up the docker infrastructure and install all dependencies. Also database magrations will be executed automatically.
+
+After installation you can open following URL's in your browser:  
+* http://localhost - catalog list should be shown
+* http://localhost/admin - simple admin section with possibility to create new admin user and new products
+> Login credentials for admin section:\
+ `Email: max@gmail.com`\
+ `Password: password`
+
 
 > Tested on macOS Mojave 10.14.x

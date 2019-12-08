@@ -67,7 +67,8 @@ $app->singleton('session.store', function () use ($app) {
 */
 
 $app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
+    'auth'         => App\Http\Middleware\Authenticate::class,
+    'frontendAuth' => App\Http\Middleware\FrontendAuthenticate::class,
 ]);
 
 $app->middleware([

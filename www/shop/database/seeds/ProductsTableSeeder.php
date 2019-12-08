@@ -9,7 +9,7 @@ class ProductsTableSeeder extends Seeder
     /**
      * @var int how many products should we create
      */
-    protected $seedCounter = 1000;
+    protected $seedCounter = 10;
 
 
     /**

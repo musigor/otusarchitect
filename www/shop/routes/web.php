@@ -32,3 +32,23 @@ $router->get('api/logout', 'Api\UserController@logout');
  * catalog
  */
 $router->get('api/products[/{id}]', 'Api\ProductsController@products');
+
+/**
+ * Frontend routes
+ */
+$router->get('/', 'IndexController@index');
+$router->get('/admin', 'IndexController@admin');
+$router->get('/login', 'IndexController@admin');
+$router->get('/logout', 'IndexController@logout');
+$router->post('/login', 'IndexController@login');
+
+/**
+ * Backend routes
+ */
+$router->group(['middleware' => ['frontendAuth']], function () use ($router) {
+    $router->get('/admin/user', 'IndexController@user');
+    $router->post('/admin/user/create', 'IndexController@userCreate');
+
+    $router->get('/admin/product', 'IndexController@product');
+    $router->post('/admin/product/create', 'IndexController@productCreate');
+});
