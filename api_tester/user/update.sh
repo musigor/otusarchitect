@@ -1,3 +1,3 @@
 #!/bin/sh
 
-curl -X PUT -d @update.json http://architect.de/api/users --header "Content-Type:application/json"
+curl -X PUT -d @update.json http://localhost/api/users --header "Content-Type:application/json"

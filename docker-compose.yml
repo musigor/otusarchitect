@@ -17,7 +17,7 @@ services:
       MYSQL_PASSWORD: shoppw
       MYSQL_DATABASE: shop
 
-  architect.de:
+  im.shop:
     image: webdevops/php-nginx:7.3
     restart: unless-stopped
     ports:
