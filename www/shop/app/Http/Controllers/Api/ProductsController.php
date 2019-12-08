@@ -21,7 +21,7 @@ class ProductsController extends Controller
     {
         $products = DB::select("SELECT * FROM products");
 
-        return response()->json($products);
+        return response()->json($products ?? []);
     }
 
     /**
