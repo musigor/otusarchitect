@@ -18,7 +18,7 @@ Backend users are able to execute CRUD operations on all shop relevant entities.
 2. The second service is a product service, administrators can consume this service to create, update and delete of products.\
 Unauthorized users can only read catalog products.  
 
-Here is some simple visual representation:
+Here is some simple visual representation:\
 ![Image alt](documentation/services.png)
 
 ### Physical architecture
